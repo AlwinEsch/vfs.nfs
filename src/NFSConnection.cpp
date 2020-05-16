@@ -335,7 +335,7 @@ void CNFSConnection::CheckIfIdle()
       }
       else
       {
-        kodi::Log(ADDON_LOG_NOTICE, "NFS is idle. Closing the remaining connections.");
+        kodi::Log(ADDON_LOG_INFO, "NFS is idle. Closing the remaining connections.");
         Deinit();
       }
     }
@@ -403,7 +403,7 @@ void CNFSConnection::keepAlive(std::string _exportPath, struct nfsfh  *_pFileHan
   if (!pContext)// this should normally never happen - paranoia
     pContext = m_pNfsContext;
 
-  kodi::Log(ADDON_LOG_NOTICE, "NFS: sending keep alive after %i s.", KEEP_ALIVE_TIMEOUT/2);
+  kodi::Log(ADDON_LOG_INFO, "NFS: sending keep alive after %i s.", KEEP_ALIVE_TIMEOUT/2);
   std::unique_lock<std::recursive_mutex> lock(*this);
   nfs_lseek(pContext, _pFileHandle, 0, SEEK_CUR, &offset);
   nfs_read(pContext, _pFileHandle, 32, buffer);

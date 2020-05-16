@@ -58,7 +58,7 @@ void* CNFSFile::Open(const VFSURL& url)
   // if a file matches the if below return false, it can't exist on a nfs share.
   if (!IsValidFile(url.filename))
   {
-    kodi::Log(ADDON_LOG_NOTICE,"NFS: Bad URL : '%s'", url.filename);
+    kodi::Log(ADDON_LOG_INFO,"NFS: Bad URL : '%s'", url.filename);
     return nullptr;
   }
 
